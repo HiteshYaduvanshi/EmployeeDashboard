@@ -16,7 +16,9 @@ function ProjectPage() {
     <>
       <div className="p-6">
         <div className="flex justify-between items-center">
-          <h1 className="font-medium text-xl dark:text-[#E9ECEF]">My Projects</h1>
+          <h1 className="font-medium text-xl dark:text-[#E9ECEF]">
+            My Projects
+          </h1>
           <ul className="flex items-center gap-1">
             <li>
               <AiOutlineHome className="dark:text-[#E9ECEF]" />
@@ -67,22 +69,50 @@ function ProjectPage() {
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                     >
                       <td className="px-6 font-medium py-4">{project.id}</td>
-                      <td className="px-6 font-medium py-4">
+                      <td className="px-6 font-medium py-4 capitalize">
                         {project.projectTitle}
                       </td>
                       <td className="px-6 font-medium py-4">
-                      {formatDate(project.startDate)}
+                        {formatDate(project.startDate)}
                       </td>
                       <td className="px-6 font-medium py-4">
-                      {formatDate(project.endDate)}
+                        {formatDate(project.endDate)}
                       </td>
                       <td className="px-6 font-medium py-4">
-                        <div className="border border-[#FDDCE3] bg-[#FDDCE3] text-[#F11541] w-fit px-3 py-1 rounded-md">
+                        <div
+                          className="border  w-fit px-3 py-1 rounded-md capitalize"
+                          style={{
+                            color:
+                              project.priority === "low"
+                                ? "#008000"
+                                : project.priority === "medium"
+                                ? "#2196F3"
+                                : "#FF0000",
+                            borderColor:
+                              project.priority === "low"
+                                ? "#008000"
+                                : project.priority === "medium"
+                                ? "#2196F3"
+                                : "#FF0000",
+                          }}
+                        >
                           {project.priority}
                         </div>
                       </td>
                       <td className="px-6 font-medium py-4">
-                        <div className="border border-[#2196F3] text-[#2196F3] w-fit px-3 py-1 rounded-md">
+                        <div
+                          className="border w-fit px-3 py-1 rounded-md capitalize"
+                          style={{
+                            color:
+                              project.status === "active"
+                                ? "#008000"
+                                : "#FF0000",
+                            borderColor:
+                              project.status === "active"
+                                ? "#008000"
+                                : "#FF0000",
+                          }}
+                        >
                           {project.status}
                         </div>
                       </td>

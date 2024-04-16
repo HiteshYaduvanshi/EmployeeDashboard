@@ -37,7 +37,7 @@ function Leave() {
     const endDate = new Date(toDate);
     const timeDifference = endDate.getTime() - startDate.getTime();
     const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return daysDifference+1;
+    return daysDifference + 1;
   };
 
   const handleAddIconClick = () => {
@@ -61,16 +61,19 @@ function Leave() {
   const handleLeaveSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://dashboard-api-zc58.onrender.com/add-leaves", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...leaveRequest,
-          user: userID,
-        }),
-      });
+      const response = await fetch(
+        "https://dashboard-api-zc58.onrender.com/add-leaves",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...leaveRequest,
+            user: userID,
+          }),
+        }
+      );
 
       if (response.ok) {
         toast.success("leave request successfull", {
@@ -193,7 +196,23 @@ function Leave() {
                         {leave.leaveType} Leave
                       </td>
                       <td className="px-6 font-medium py-4">
-                        <div className="border border-[#2196F3] text-[#2196F3] w-fit px-3 py-1 rounded-md capitalize">
+                        <div
+                          className="border border-[#2196F3]  w-fit px-3 py-1 rounded-md capitalize"
+                          style={{
+                            color:
+                              leave.status === "approved"
+                                ? "#008000"
+                                : leave.status === "pending"
+                                ? "#2196F3"
+                                : "#FF0000",
+                            borderColor:
+                              leave.status === "approved"
+                                ? "#008000"
+                                : leave.status === "pending"
+                                ? "#2196F3"
+                                : "#FF0000",
+                          }}
+                        >
                           {leave.status}
                         </div>
                       </td>

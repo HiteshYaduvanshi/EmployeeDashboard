@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function LoginComponent() {
   const [inputData, setInputData] = useState({
-    email: "",
-    password: "",
+    email: "example@gmail.com",
+    password: "Example@123",
   });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -78,7 +78,7 @@ function LoginComponent() {
               id="email"
               name="email"
               autoComplete="off"
-              value={inputData.username}
+              value={inputData.email}
               onChange={handleInputData}
             />
           </div>

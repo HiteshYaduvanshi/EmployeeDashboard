@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { RxTriangleRight } from "react-icons/rx";
 import { useAuth } from "../Store/Auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SettingPage() {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -28,6 +30,16 @@ function SettingPage() {
       if (response.ok) {
         const responseData = await response.json();
         setMessage(responseData.message);
+        setCurrentPassword("")
+        setNewPassword("")
+        toast.success("Password Change successfull",{
+          theme: "colored",
+        })
+      }
+      else{
+        toast.error("Password change failed",{
+          theme: "colored",
+        });
       }
     } catch (error) {
       setMessage("An error occurred. Please try again.");
@@ -37,6 +49,7 @@ function SettingPage() {
 
   return (
     <>
+    <ToastContainer />
       <div className="p-6">
         <div className="flex justify-between items-center">
           <h1 className="font-medium text-xl dark:text-[#E9ECEF]">

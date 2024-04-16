@@ -90,7 +90,7 @@ function ChatPage() {
                     >
                       <div className="w-12 h-12 rounded-full bg-red-600 flex justify-center items-center">
                         <img
-                          src={`http://localhost:5001/images/${imageName}`}
+                          src={`https://dashboard-api-zc58.onrender.com/images/${imageName}`}
                           alt=""
                           className="w-12 h-12 rounded-full"
                         />
@@ -122,7 +122,7 @@ function ChatPage() {
                     >
                       <div className="w-12 h-12 rounded-full flex justify-center items-center">
                         <img
-                          src={`http://localhost:5001/images/${imageName}`}
+                          src={`https://dashboard-api-zc58.onrender.com/images/${imageName}`}
                           alt=""
                           className="rounded-full"
                         />

@@ -61,16 +61,50 @@ function TaskPage() {
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                     >
                       <td className="px-6 font-medium py-4">{task.id}</td>
-                      <td className="px-6 font-medium py-4">{task.project}</td>
-                      <td className="px-6 font-medium py-4">{task.type}</td>
-                      <td className="px-6 font-medium py-4">{task.priority}</td>
-                      <td className="px-6 font-medium py-4">
-                        {/* <div className="border border-[#FDDCE3] bg-[#FDDCE3] text-[#F11541] w-fit px-3 py-1 rounded-md">
-                        </div> */}
+                      <td className="px-6 font-medium py-4 capitalize">
+                        {task.project}
+                      </td>
+                      <td className="px-6 font-medium py-4 capitalize">
+                        {task.type}
+                      </td>
+                      <td className="px-6 font-medium py-4 capitalize">
+                        <div
+                          className="border border-[#2196F3] text-[#2196F3] w-fit px-3 py-1 rounded-md"
+                          style={{
+                            color:
+                              task.priority === "low"
+                                ? "#008000"
+                                : task.priority === "medium"
+                                ? "#2196F3"
+                                : "#FF0000",
+                            borderColor:
+                              task.priority === "low"
+                                ? "#008000"
+                                : task.priority === "medium"
+                                ? "#2196F3"
+                                : "#FF0000",
+                          }}
+                        >
+                          {task.priority}
+                        </div>
+                      </td>
+                      <td className="px-6 font-medium py-4 capitalize">
                         {task.details}
                       </td>
                       <td className="px-6 font-medium py-4">
-                        <div className="border border-[#2196F3] text-[#2196F3] w-fit px-3 py-1 rounded-md">
+                        <div
+                          className="border  w-fit px-3 py-1 rounded-md capitalize"
+                          style={{
+                            color:
+                              task.status === "open"
+                                ? "#008000"
+                                : "#FF0000",
+                            borderColor:
+                              task.status === "open"
+                                ? "#008000"
+                                : "#FF0000",
+                          }}
+                        >
                           {task.status}
                         </div>
                       </td>

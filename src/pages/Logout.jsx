@@ -8,7 +8,7 @@ function Logout() {
     useEffect(() => {
         const handleLogout = async () => {
             try {
-                const response = await fetch('http://localhost:5001/logout', {
+                const response = await fetch('https://dashboard-api-zc58.onrender.com/logout', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -24,8 +24,8 @@ function Logout() {
             }
         };
 
-        console.log('Logout effect triggered');
         handleLogout();
+        logout()
     }, [userID]);
 
     return <Navigate to="/" />;

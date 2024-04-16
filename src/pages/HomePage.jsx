@@ -18,7 +18,7 @@ import { useAuth } from "../Store/Auth";
 function HomePage() {
   const { leaveData, ticketData, projectData } = useAuth();
 
-  const approvedLeaveCount = leaveData.filter(leave => leave.status === "Approved").length;
+  const approvedLeaveCount = leaveData.filter(leave => leave.status === "approved").length;
   
   const resolvedTicketCount = ticketData.reduce((count, ticket) => {
     if (ticket.status === "Resolved") {

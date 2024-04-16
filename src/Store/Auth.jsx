@@ -167,7 +167,7 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     getProjectData();
-  }, []);
+  }, [projectData,setProjectData]);
 
   const fetchClient = async () => {
     try {
@@ -219,7 +219,7 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     getTaskData();
-  }, []);
+  }, [taskData,setTaskData]);
 
   const getAttendenceData = async () => {
     try {
@@ -257,7 +257,6 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         const data = await response.json();
-
         setTicketData(data.ticketData);
       } else {
         console.log(
@@ -272,7 +271,7 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     getTicketData();
-  }, []);
+  }, [ticketData,setTicketData]);
 
   const handleSearchChatSubmit = async (e) => {
     e.preventDefault();

@@ -116,15 +116,14 @@ function DashboardNavbarComponent() {
               >
                 <NavLink
                   to="/logout"
-                  className="flex dark:text-white items-center gap-2 hover:bg-slate-300 w-full justify-center py-3 rounded"
+                  className="flex dark:text-white items-center gap-2 dark:hover:bg-[#003554] hover:bg-[#F0F3FB] w-full justify-center py-3 rounded"
                 >
                   <MdOutlineLogout /> Logout
                 </NavLink>
                 <div
                   onClick={handleBreak}
-                  className="flex items-center gap-3 dark:text-white hover:bg-slate-300 w-full justify-center py-3 rounded"
+                  className="flex items-center gap-3 dark:text-white dark:hover:bg-[#003554] hover:bg-[#F0F3FB] w-full justify-center py-3 rounded"
                 >
-                  {" "}
                   <IoFastFoodOutline /> Break
                 </div>
               </div>
@@ -136,8 +135,8 @@ function DashboardNavbarComponent() {
       {showModal && (
         <div className="fixed z-50 inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white dark:bg-[#1A202D] p-8 rounded-md">
-            <h2 className="text-2xl font-bold mb-4">Break Taken</h2>
-            <p>Your break has been successfully recorded.</p>
+            <h2 className="text-2xl font-bold mb-4 dark:text-white">Break Taken</h2>
+            <p className="dark:text-white">Your break has been successfully recorded.</p>
             <button
               onClick={handleBreakEnd}
               className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
