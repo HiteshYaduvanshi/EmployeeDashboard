@@ -27,6 +27,11 @@ export const AuthProvider = ({ children }) => {
   // const [chatname, setChatName] = useState("");
   // const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
   const authorizedToken = `Bearer ${token}`;
 
@@ -449,6 +454,8 @@ export const AuthProvider = ({ children }) => {
         chatWithData,
         setRefresh,
         refresh,
+        toggleDrawer,
+        isDrawerOpen,
       }}
     >
       {children}

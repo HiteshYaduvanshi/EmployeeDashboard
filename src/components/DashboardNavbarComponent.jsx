@@ -8,7 +8,7 @@ import { HiSun } from "react-icons/hi";
 import { IoFastFoodOutline } from "react-icons/io5";
 
 function DashboardNavbarComponent() {
-  const { userData, userID } = useAuth();
+  const { userData, userID,toggleDrawer } = useAuth();
   const [hidden, setHidden] = useState(true);
   const [isProfileClicked, setProfileClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -77,15 +77,20 @@ function DashboardNavbarComponent() {
   return (
     <>
       <div className="w-full bg-white dark:bg-[#1A202D] h-14 flex items-center">
-        <div className={` text-center ${isHovered ? "w-[20%]" : "w-[4%]"}`}>
-          <h1 className="text-2xl font-bold dark:text-[#e9ecef]">
+        <div className={` text-center ${isHovered ? "lg:w-[20%]" : "lg:w-[4%]"}`}>
+          <h1 className="text-2xl font-bold dark:text-[#e9ecef] hidden lg:block">
             {isHovered ? "Brand-Name" : "B"}
           </h1>
+          <h1 className="text-2xl font-bold dark:text-[#e9ecef] ml-3 lg:hidden">B</h1>
         </div>
         <div className="w-full px-6 flex justify-between items-center shadow-sm">
           <RxHamburgerMenu
-            className="text-2xl dark:text-[#e9ecef]"
+            className="text-2xl dark:text-[#e9ecef] hidden lg:block"
             onClick={handleToggleMenue}
+          />
+          <RxHamburgerMenu
+            className="text-2xl dark:text-[#e9ecef]"
+            onClick={toggleDrawer}
           />
           <div className="flex items-center gap-4">
             <div onClick={handleThemeSwitch}>

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "../App.css";
+import React from "react";
+import { useAuth } from "../Store/Auth";
 import { NavLink } from "react-router-dom";
-import { FiAirplay } from "react-icons/fi";
-import { FiEdit } from "react-icons/fi";
+import { FiAirplay, FiEdit } from "react-icons/fi";
 import { AiOutlineAudit } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { FiDatabase } from "react-icons/fi";
@@ -11,24 +10,18 @@ import { CiChat1 } from "react-icons/ci";
 import { FiCommand } from "react-icons/fi";
 import { RxExit } from "react-icons/rx";
 import { IoTicketOutline } from "react-icons/io5";
-import { useAuth } from "../Store/Auth";
 import { FiUserPlus } from "react-icons/fi";
 import { TbDatabasePlus } from "react-icons/tb";
 import { AiOutlineMacCommand } from "react-icons/ai";
-import SideDrawer from "./SideDrawer";
 
-function SideBar() {
-  const { isHovered, handleHover, handleLeave, userData } = useAuth();
-
+function SideDrawer() {
+  const { isHovered, userData, isDrawerOpen, toggleDrawer } = useAuth();
   return (
     <>
-      <SideDrawer/>
       <div
         className={`${
-          isHovered ? "lg:w-[17%] w-0" : "lg:w-[4%] w-0"
-        }  h-[95vh] bg-white dark:bg-[#1A202D] fixed overflow-y-scroll custom-scrollbar transition-width ease-in-out delay-150 duration-300 hidden lg:block`}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
+          isDrawerOpen ? "translate-x-0" : "hidden -translate-x-full"
+        } h-[95vh] bg-white dark:bg-[#1A202D] fixed overflow-y-scroll custom-scrollbar transition-width ease-in-out delay-150 duration-300 lg:hidden z-50`}
       >
         <div
           className={`text-center py-4 ${
@@ -66,6 +59,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiAirplay />
               <span
@@ -85,6 +79,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiEdit />{" "}
               <span
@@ -104,6 +99,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <AiOutlineAudit />
               <span
@@ -123,6 +119,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <LuUsers />
               <span
@@ -142,6 +139,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiDatabase />{" "}
               <span
@@ -161,6 +159,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiCommand />{" "}
               <span
@@ -180,6 +179,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <BsGear />
               <span
@@ -199,6 +199,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <CiChat1 />{" "}
               <span
@@ -234,6 +235,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiAirplay />
               <span
@@ -253,6 +255,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <IoTicketOutline />
               <span
@@ -272,6 +275,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <RxExit />{" "}
               <span
@@ -307,6 +311,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <FiUserPlus />
               <span
@@ -326,6 +331,7 @@ function SideBar() {
                     : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <TbDatabasePlus className="ml-[-2px]" />
               <span
@@ -341,10 +347,11 @@ function SideBar() {
               className={({ isActive }) =>
                 `${
                   isActive
-                    ? "bg-[#f0f3fb] dark:bg-[#003554] hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
-                    : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2"
+                    ? "bg-[#f0f3fb] dark:bg-[#003554] hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 mb-7 rounded-md font-medium flex items-center gap-2"
+                    : "hover:bg-[#F0F3FB] dark:hover:bg-[#003554] dark:text-[#e9ecef] px-3 py-3 rounded-md font-medium flex items-center gap-2 mb-7"
                 }`
               }
+              onClick={toggleDrawer}
             >
               <AiOutlineMacCommand className="ml-[-2px]" />
               <span
@@ -362,4 +369,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default SideDrawer;
