@@ -62,20 +62,20 @@ function TodoComponent() {
               onChange={handleInput}
               className={`${
                 isHovered ? "max-w-32" : "max-w-48"
-              } border-2 px-1 py-2 focus:outline-none`}
+              } border-2 px-1 py-2 focus:outline-none dark:bg-transparent dark:text-white`}
             />
             <select
               name="priority"
               value={inputData.priority}
               onChange={handleInput}
-              className="max-w-40 border-2 px-1 py-2 focus:outline-none"
+              className="max-w-40 border-2 px-1 py-2 focus:outline-none bg-transparent dark:text-white"
             >
               <option value="" disabled hidden>
                 Priority
               </option>
-              <option value="high">High</option>
-              <option value="normal">Normal</option>
-              <option value="low">Low</option>
+              <option value="high" className="dark:bg-[#232B3E]">High</option>
+              <option value="normal" className="dark:bg-[#232B3E]">Normal</option>
+              <option value="low" className="dark:bg-[#232B3E]">Low</option>
             </select>
             <button
               type="submit"

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 import { useAuth } from "../Store/Auth";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingBar from 'react-top-loading-bar'; // Import the LoadingBar component
 
 function LoginComponent() {
   const [inputData, setInputData] = useState({
@@ -12,9 +13,11 @@ function LoginComponent() {
     password: "Example@123",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // State to control loading bar
 
-  const {storeTokenInLocalStorage,storeUserIDLocalStorage,clientData} = useAuth()
-  const navigate = useNavigate()
+  const { storeTokenInLocalStorage, storeUserIDLocalStorage, clientData } = useAuth();
+  const navigate = useNavigate();
+  let loadingRef = useRef(null); // Ref to access the LoadingBar component
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -30,41 +33,48 @@ function LoginComponent() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setLoading(true); // Show loading bar when login process starts
+    loadingRef.current.staticStart(); // Start the loading animation
     try {
-      const response = await fetch("https://dashboard-api-zc58.onrender.com/login",{
+      const response = await fetch("https://dashboard-api-zc58.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(inputData)
-      })
-      if(response.ok){
+      });
+      if (response.ok) {
         const resData = await response.json();
-        storeTokenInLocalStorage(resData.token)
-        storeUserIDLocalStorage(resData.userID)
-        toast.success("Login success",{
+        storeTokenInLocalStorage(resData.token);
+        storeUserIDLocalStorage(resData.userID);
+        toast.success("Login success", {
           theme: "colored",
-        })
+        });
+        loadingRef.current.complete(); // Complete the loading animation
         setTimeout(() => {
           navigate("/dashboard");
           window.location.reload(true);
-        }, 2000); 
-        // navigate("/dashboard")
-        // window.location.reload(true);
-      }
-      else{
-        toast.error("Invalid Email or Password",{
+          setLoading(false); // Hide loading bar when login is successful
+        }, 2000);
+      } else {
+        toast.error("Invalid Email or Password", {
           theme: "colored",
         });
+        setLoading(false); // Hide loading bar when login fails
+        loadingRef.current.complete(); // Complete the loading animation
       }
     } catch (error) {
       // console.error(error.message)
+      setLoading(false); // Hide loading bar when login fails due to error
+      loadingRef.current.complete(); // Complete the loading animation
     }
-  }
+  };
+
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
+      <LoadingBar color="#0085DB" ref={loadingRef} /> {/* Loading bar */}
       <div className="max-w-[400px] w-full h-auto bg-white rounded-2xl shadow-lg p-5">
         <h1 className="text-center text-2xl font-semibold pt-4">Brand-Name</h1>
         <form className="pt-5 flex flex-col gap-5" onSubmit={handleSubmit}>
