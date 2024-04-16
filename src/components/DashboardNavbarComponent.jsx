@@ -89,7 +89,7 @@ function DashboardNavbarComponent() {
             onClick={handleToggleMenue}
           />
           <RxHamburgerMenu
-            className="text-2xl dark:text-[#e9ecef]"
+            className="text-2xl dark:text-[#e9ecef] lg:hidden"
             onClick={toggleDrawer}
           />
           <div className="flex items-center gap-4">
