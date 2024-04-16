@@ -79,7 +79,7 @@ function Register() {
             <h1 className="font-medium capitalize text-md dark:text-[#96A2B4]">
               Register
             </h1>
-            <div className="flex justify-between items-center mt-10">
+            <div className="lg:flex justify-between items-center mt-10">
               <div className="basis-1/2 ">
                 <img src={SignupImg} alt="" className="mx-auto" />
               </div>

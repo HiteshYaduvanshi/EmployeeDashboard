@@ -84,13 +84,13 @@ function AddTask() {
             <h1 className="font-medium capitalize text-md dark:text-[#96A2B4]">
               Add Task
             </h1>
-            <div className="flex  h-full justify-between items-center mt-10">
+            <div className="lg:flex h-full justify-between items-center mt-10">
               <div className="basis-1/2 ">
                 <img src={SignupImg} alt="" className="mx-auto" />
               </div>
-              <div className="basis-1/2">
+              <div className="basis-1/2 my-3">
                 <form
-                  className="max-w-md h-[400px] flex flex-col justify-center"
+                  className="max-w-md h-[420px] py-3 flex flex-col justify-center"
                   onSubmit={handleSubmit}
                 >
                   <div className="relative z-0 w-full mb-7 group">
