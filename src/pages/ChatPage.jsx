@@ -51,7 +51,7 @@ function ChatPage() {
           </ul>
         </div>
         <div className="w-full h-[77vh] mt-8  dark:bg-[#1F2937] rounded-md overflow-y-scroll custom-scrollbar flex flex-col lg:flex-row justify-between items-start gap-5">
-          <div className="basis-[30%] bg-[#e4e4f1] dark:bg-[#1B202D] h-full rounded-md p-4 flex flex-col">
+          <div className=" lg:basis-[30%] basis-full w-full bg-[#e4e4f1] dark:bg-[#1B202D] h-full rounded-md p-4 flex flex-col">
             <NavLink to="/dashboard/chat/users">
               <div className="bg-white dark:bg-[#232B3E] rounded-lg cursor-pointer p-3 flex gap-3 items-center">
                 <LuUserPlus className="text-2xl dark:text-white" />
@@ -86,7 +86,7 @@ function ChatPage() {
                         });
                         setRefresh(conversation._id);
                       }}
-                      className="flex items-center gap-3 border p-2 rounded-lg"
+                      className="flex items-center gap-3 border p-2 rounded-lg cursor-pointer"
                     >
                       <div className="w-12 h-12 rounded-full bg-red-600 flex justify-center items-center">
                         <img
@@ -97,7 +97,7 @@ function ChatPage() {
                       </div>
                       <div className="flex-1 flex gap-3 items-end justify-between">
                         <div>
-                          <p className="dark:text-white">{chatName}</p>
+                          <p className="dark:text-white capitalize font-semibold">{chatName}</p>
                           <p className="dark:text-white">Start Coversation</p>
                         </div>
                       </div>
@@ -118,7 +118,7 @@ function ChatPage() {
                         });
                         setRefresh(conversation._id);
                       }}
-                      className="flex items-center gap-3 border p-2 rounded-lg"
+                      className="flex items-center gap-3 border p-2 rounded-lg cursor-pointer"
                     >
                       <div className="w-12 h-12 rounded-full flex justify-center items-center">
                         <img
@@ -129,7 +129,7 @@ function ChatPage() {
                       </div>
                       <div className="flex-1 flex gap-3 items-end justify-between">
                         <div className=" max-w-fit">
-                          <p className="dark:text-white font-semibold">
+                          <p className="dark:text-white font-semibold capitalize">
                             {chatName}
                           </p>
                           <p className="line-clamp-1 w-20 dark:text-white text-sm">
@@ -150,7 +150,7 @@ function ChatPage() {
               })}
             </div>
           </div>
-          <div className="basis-[70%] gap-3 bg-[#dbdbe1] dark:bg-[#1B202D] h-full rounded-md flex flex-col">
+          <div className="lg:basis-[70%] basis-full w-full gap-3 bg-[#dbdbe1] dark:bg-[#1B202D] h-full rounded-md flex flex-col">
             <Outlet />
           </div>
         </div>

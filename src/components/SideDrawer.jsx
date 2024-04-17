@@ -21,7 +21,7 @@ function SideDrawer() {
       <div
         className={`${
           isDrawerOpen ? "translate-x-0" : "hidden -translate-x-full"
-        } h-[95vh] bg-white dark:bg-[#1A202D] fixed overflow-y-scroll custom-scrollbar transition-width ease-in-out delay-150 duration-300 lg:hidden z-50`}
+        } h-[95vh] bg-white dark:bg-[#1A202D] fixed overflow-y-scroll custom-scrollbar transition-width ease-in-out delay-150 duration-300 py-5 lg:hidden z-50`}
       >
         <div
           className={`text-center py-4 ${
